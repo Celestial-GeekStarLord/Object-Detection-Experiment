@@ -55,14 +55,19 @@ class VoiceAnnouncer:
 # CONFIG
 # =========================
 CAMERA_INDEX = 0
-CONFIDENCE_THRESHOLD = 0.6  # Minimum confidence to detect object
+CONFIDENCE_THRESHOLD = 0.7  # Minimum confidence to detect object
 COOLDOWN_SECONDS = 3  # Time between announcements for same object
 ABSENCE_FRAMES = 20  # Frames to wait before marking as absent (~0.7 seconds)
 
 # Objects to track (customize this list!)
 # Leave empty [] to track ALL 80 COCO objects
 # Or specify only what you want, e.g. ['person', 'laptop', 'cell phone', 'cup']
-OBJECTS_TO_TRACK = []  # Empty = track everything
+OBJECTS_TO_TRACK = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck',
+                'traffic light', 'bench', 'cat', 'dog', 'backpack', 'sports ball',
+                'bottle', 'cup', 'knife', 'spoon', 'bowl', 'banana', 'apple', 
+                'orange', 'carrot', 'chair', 'bed', 'dining table', 'toilet',
+                'tv', 'laptop', 'mouse', 'keyboard', 'cell phone', 'book', 'clock']
+
 
 # Full COCO dataset (80 classes)
 COCO_CLASSES = [

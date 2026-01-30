@@ -177,3 +177,4 @@ finally:
     cv2.destroyAllWindows()
     print("✅ Registration complete")
     print(f"📦 Database saved to {DB_FILE}")
+
