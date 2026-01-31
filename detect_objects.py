@@ -5,9 +5,9 @@ import pyttsx3
 import numpy as np
 from ultralytics import YOLO
 
-# =========================
+
 # IMPROVED VOICE ENGINE
-# =========================
+
 class VoiceAnnouncer:
     def __init__(self):
         self.lock = threading.Lock()
@@ -51,9 +51,9 @@ class VoiceAnnouncer:
         self.running = False
         self.thread.join(timeout=3)
 
-# =========================
+
 # SPATIAL POSITION HELPER
-# =========================
+
 def get_position(center_x, frame_width):
     """
     Determine if object is on left, center, or right of frame
@@ -69,9 +69,9 @@ def get_position(center_x, frame_width):
     else:
         return "center"
 
-# =========================
+
 # CONFIG
-# =========================
+
 CAMERA_INDEX = 0
 CONFIDENCE_THRESHOLD = 0.7  # Minimum confidence to detect object
 REANNOUNCE_TIMEOUT = 10  # Seconds before re-announcing same object
