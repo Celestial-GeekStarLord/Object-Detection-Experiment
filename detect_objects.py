@@ -70,7 +70,7 @@ def get_position(center_x, frame_width):
         return "center"
 
 
-# CONFIG
+
 
 
 CONFIDENCE_THRESHOLD = 0.7  # Minimum confidence to detect object
