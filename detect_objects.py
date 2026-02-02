@@ -123,7 +123,7 @@ announcer = VoiceAnnouncer()
 time.sleep(0.5)
 
 # =========================
-# TRACKING STATE
+# TRACKING STATE ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
 # =========================
 last_announced_object = None  # The last object that was announced
 last_announcement_time = {}  # When each object was last announced
