@@ -52,7 +52,7 @@ class VoiceAnnouncer:
         self.thread.join(timeout=3)
 
 
-# SPATIAL POSITION HELPER
+
 
 def get_position(center_x, frame_width):
     """
