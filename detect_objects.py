@@ -78,10 +78,10 @@ REANNOUNCE_TIMEOUT = 10  # Seconds before re-announcing same object
 ABSENCE_FRAMES = 20  # Frames to wait before marking as absent (~0.7 seconds)
 
 # Objects to track (customize this list!)
-OBJECTS_TO_TRACK = ['person', 'bicycle', 'car', 'motorcycle', 'bus', 'truck',
-                'traffic light', 'bench', 'cat', 'dog', 'backpack', 'sports ball',
+OBJECTS_TO_TRACK = ['person', 
+                 'bench',  'backpack', 'sports ball',
                 'bottle', 'cup', 'knife', 'spoon', 'bowl', 'banana', 'apple', 
-                'orange', 'carrot', 'chair', 'bed', 'dining table', 'toilet',
+                'orange', 'carrot', 'chair',  
                 'tv', 'laptop', 'mouse', 'keyboard', 'cell phone', 'book', 'clock']
 
 # Full COCO dataset (80 classes)

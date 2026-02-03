@@ -1,0 +1,33 @@
+# Dataset root directory (absolute or relative)
+path: ./dataset
+
+# Train / validation images
+train: images/train
+val: images/val
+
+# Number of classes
+nc: 3
+
+# Class names (ORDER MATTERS)
+names:
+  0: person
+  1: bench
+  2: backpack
+  3: sports ball
+  4: bottle
+  5: cup
+  6: knife
+  7: spoon
+  8: bowl
+  9: banana
+ 10: apple
+ 11: orange
+ 12: carrot
+ 13: chair
+ 14: tv
+ 15: laptop
+ 16: mouse
+ 17: keyboard
+ 18: cell phone
+ 19: book
+ 20: clock
