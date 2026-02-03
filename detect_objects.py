@@ -109,7 +109,7 @@ else:
     for obj in OBJECTS_TO_TRACK:
         print(f"   - {obj}")
 
-# =========================
+
 # LOAD YOLO MODEL
 # =========================
 print(f"\n🧠 Loading YOLOv11 model...")
