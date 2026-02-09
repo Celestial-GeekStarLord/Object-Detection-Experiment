@@ -3,16 +3,16 @@ import time
 import pyttsx3
 from ultralytics import YOLO
 
-# =========================
+
 # CONFIGURATION
-# =========================
+
 MODEL_PATH = 'yolo11n.onnx'
 CONFIDENCE_THRESHOLD = 0.5
 REPEAT_DELAY = 10  # seconds before repeating same object
 
-# =========================
+
 # TTS INITIALIZATION
-# =========================
+
 tts = pyttsx3.init(driverName="espeak")
 tts.setProperty("rate", 155)
 tts.setProperty("volume", 1.0)
@@ -27,9 +27,9 @@ def speak(text):
     tts.say(text)
     tts.runAndWait()
 
-# =========================
+
 # MODEL INITIALIZATION
-# =========================
+
 print("🧠 Loading Headless Model...")
 model = YOLO(MODEL_PATH, task="detect")
 print("✅ Model loaded. Starting terminal stream...")
@@ -43,9 +43,9 @@ if not cap.isOpened():
 
 print("🚀 Tracking active. Press Ctrl+C to stop.\n")
 
-# =========================
+
 # MEMORY FOR SPOKEN OBJECTS
-# =========================
+
 last_spoken = {}  
 # format:
 # {
@@ -53,9 +53,9 @@ last_spoken = {}
 #   "bottle_CENTER": timestamp
 # }
 
-# =========================
+
 # MAIN LOOP
-# =========================
+
 try:
     while True:
         ret, frame = cap.read()
@@ -91,9 +91,9 @@ try:
                 key = f"{label}_{pos}"
                 found_objects.append(f"{label} ({pos})")
 
-                # =========================
+                
                 # SPEAK LOGIC
-                # =========================
+                
                 last_time = last_spoken.get(key, 0)
 
                 if key not in last_spoken or (now - last_time) >= REPEAT_DELAY:
@@ -101,9 +101,9 @@ try:
                     speak(speak_text)
                     last_spoken[key] = now
 
-        # =========================
+        
         # TERMINAL OUTPUT
-        # =========================
+        
         if found_objects:
             print(f"🔎 Detected: {', '.join(found_objects)}", end="\r", flush=True)
         else:
