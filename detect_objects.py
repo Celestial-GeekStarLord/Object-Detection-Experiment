@@ -98,9 +98,9 @@ COCO_CLASSES = [
     'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush'
 ]
 
-# =========================
+
 # SETUP TRACKING
-# =========================
+
 if not OBJECTS_TO_TRACK:
     OBJECTS_TO_TRACK = COCO_CLASSES
     print("📦 Tracking ALL 80 COCO objects")
@@ -111,29 +111,29 @@ else:
 
 
 # LOAD YOLO MODEL
-# =========================
+
 print(f"\n🧠 Loading YOLOv11 model...")
 model = YOLO('yolo11n.pt')  # Nano model (fast)
 print("✅ Model loaded successfully")
 
-# =========================
+
 # INITIALIZE VOICE
-# =========================
+
 announcer = VoiceAnnouncer()
 time.sleep(0.5)
 
-# =========================
+
 # TRACKING STATE ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss
-# =========================
+
 last_announced_object = None  # The last object that was announced
 last_announcement_time = {}  # When each object was last announced
 object_present = {}  # Is object currently detected
 absence_counter = {}  # Count frames of absence
 object_positions = {}  # Store positions of objects (for spatial info)
 
-# =========================
+
 # CAMERA
-# =========================
+
 IP_CAMERA_URL = "http://192.168.18.4:8080/video"
 
 cap = cv2.VideoCapture(IP_CAMERA_URL)
@@ -177,9 +177,9 @@ try:
         
         detected_objects_this_frame = {}  # {object_name: (center_x, center_y, position)}
         
-        # =========================
+        
         # OBJECT DETECTION
-        # =========================
+        
         for result in results:
             boxes = result.boxes
             for box in boxes:
@@ -224,9 +224,9 @@ try:
                 # Draw center point
                 cv2.circle(frame, (center_x, center_y), 5, (0, 0, 255), -1)
         
-        # =========================
+        
         # SMART ANNOUNCEMENT LOGIC
-        # =========================
+        
         # Rule 1: Announce if it's a NEW object (different from last announced)
         # Rule 2: Announce if same object but 10+ seconds have passed
         # Rule 3: When object switches, reset and announce the new one
@@ -268,9 +268,9 @@ try:
                 last_announcement_time[obj_name] = current_time
                 print(f"🎯 Announcing: {announcement} ({reason})")
         
-        # =========================
+        
         # HANDLE ABSENT OBJECTS
-        # =========================
+        
         for obj_name in OBJECTS_TO_TRACK:
             if obj_name not in detected_objects_this_frame:
                 # Object NOT detected
@@ -285,9 +285,9 @@ try:
                         if last_announced_object == obj_name:
                             print(f"   ↳ Resetting last announced (was {obj_name})")
         
-        # =========================
+        
         # DISPLAY INFO
-        # =========================
+        
         # Draw position zones on frame
         left_line = int(frame_width * 0.33)
         right_line = int(frame_width * 0.67)
