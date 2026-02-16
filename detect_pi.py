@@ -7,18 +7,18 @@ import subprocess
 import RPi.GPIO as GPIO
 from ultralytics import YOLO
 
-
+# ========================
 # GPIO SETUP
-
+# ========================
 BTN_BACK = 27
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(BTN_BACK, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
-
+# ========================
 # CONFIGURATION
-
-MODEL_PATH = 'yolo11n.onnx'
+# ========================
+MODEL_PATH = 'best.onnx'
 CONFIDENCE_THRESHOLD = 0.5
 REPEAT_DELAY = 10
 CAMERA_RESOLUTION = 320
@@ -27,9 +27,9 @@ CAMERA_RESOLUTION = 320
 speech_process = None
 running = True
 
-
+# ========================
 # SIGNAL HANDLERS
-
+# ========================
 def signal_handler(sig, frame):
     global running
     print("\nShutting down...")
@@ -38,9 +38,9 @@ def signal_handler(sig, frame):
 signal.signal(signal.SIGINT, signal_handler)
 signal.signal(signal.SIGTERM, signal_handler)
 
-
+# ========================
 # SPEECH FUNCTIONS
-
+# ========================
 def speak(text):
     global speech_process
     
@@ -61,7 +61,7 @@ def speak(text):
         )
         
         subprocess.Popen(
-            ['aplay', '-D', 'plughw:1,0'],
+            ['aplay'],
             stdin=speech_process.stdout,
             stderr=subprocess.DEVNULL
         )
@@ -78,9 +78,9 @@ def check_back_button():
         return True
     return False
 
-
+# ========================
 # POSITION HELPERS
-
+# ========================
 def get_position(x_center, frame_width):
     if x_center < frame_width * 0.33:
         return "LEFT"
@@ -99,9 +99,9 @@ def get_distance_estimate(box_area, frame_area):
     else:
         return "FAR"
 
-
+# ========================
 # MAIN DETECTION LOOP
-
+# ========================
 def main():
     global running
     
