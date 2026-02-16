@@ -113,7 +113,7 @@ else:
 # LOAD YOLO MODEL
 
 print(f"\n🧠 Loading YOLOv11 model...")
-model = YOLO('yolo11n.pt')  # Nano model (fast)
+model = YOLO('best.pt')  # Nano model (fast)
 print("✅ Model loaded successfully")
 
 
